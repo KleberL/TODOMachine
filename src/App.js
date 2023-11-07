@@ -28,7 +28,23 @@ function App() {
     }
   )
 
-  console.log('Los usuarios buscan TODOS de ' + searchValue)
+  const completeTodos = (text) => {
+    const newTodos = [...todos];
+    const  todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text
+    )
+    newTodos[todoIndex].completed = true;
+    setTodos(newTodos)
+  }
+
+  const deleteTodos = (text) => {
+    const newTodos = [...todos];
+    const  todoIndex = newTodos.findIndex(
+      (todo) => todo.text == text
+    )
+    newTodos.splice(todoIndex, 1);
+    setTodos(newTodos)
+  }
 
   return (
     <>
@@ -49,6 +65,8 @@ function App() {
             key={todo.text} 
             text={todo.text}
             completed={todo.completed}
+            onComplete={() => completeTodos(todo.text)}
+            onDelete={() => deleteTodos(todo.text)}
           />
         ))}
       </TodoList>
