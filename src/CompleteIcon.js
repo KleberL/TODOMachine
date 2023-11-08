@@ -1,7 +1,13 @@
 import React from "react";
+import { TodoIcon } from './TodoIcon'
 
 function CompleteIcon(){
-    return 'V';
+    return (
+        <TodoIcon
+            type="check"
+            color="gray"
+        />
+    )
 }
 
 export { CompleteIcon}
