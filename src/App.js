@@ -5,16 +5,21 @@ import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import { CreateTodoButton } from './CreateTodoButton';
 
-const defaultTodos = [
-  {text: 'Cortar cebolla', completed: true},
-  {text: 'Tomar el curso de introducción a React.js', completed: false},
-  {text: 'Llorar con la Llorona', completed: false},
-  {text: 'LALALALA', completed: false},
-  {text: 'Usar estados derivados', completed: true},
-];
+// const defaultTodos = [
+//   {text: 'Cortar cebolla', completed: true},
+//   {text: 'Tomar el curso de introducción a React.js', completed: false},
+//   {text: 'Llorar con la Llorona', completed: false},
+//   {text: 'LALALALA', completed: false},
+//   {text: 'Usar estados derivados', completed: true},
+// ];
+
+// localStorage.setItem('TODOS_V1', defaultTodos);
+// localStorage.removeItem('TODOS_V1');
 
 function App() {
-  const [todos, setTodos] = React.useState(defaultTodos);
+  let parsedTodos = localStorage.getItem('TODOS_V1');
+
+  const [todos, setTodos] = React.useState(parsedTodos);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTodos = todos.filter( todo => !!todo.completed).length;
