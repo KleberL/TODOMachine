@@ -1,19 +1,16 @@
-import './CreateTodoButton.css'
+import './CreateTodoButton.css';
 
-function CreateTodoButton(){
-    return(
-        <button 
-            className='CreateTodoButton'
-            onClick={
-                (e) => {
-                    console.log('Le diste click');
-                    console.log(e);
-                    console.log(e.target)
-                }}
-        >
-            +
-        </button>
-    );
+function CreateTodoButton({ setOpenModal }) {
+  return (
+    <button
+      className="CreateTodoButton"
+      onClick={
+        () => {
+          setOpenModal(state => !state);
+        }
+      }
+    >+</button>
+  );
 }
 
 export { CreateTodoButton };
