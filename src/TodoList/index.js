@@ -1,10 +1,21 @@
-import './TodoList.css';
+import "./TodoList.css";
 
-function TodoList({ children }) {
+function TodoList(props) {
+  const renderFun = props.render || props.children;
+
   return (
-    <ul className="TodoList">
-      {children}
-    </ul>
+    <section className="TodoList-container">
+      {props.error && props.onError()}
+      {props.loading && props.onLoading()}
+
+      {(!props.loading && !props.totalTodos) && props.onEmptyTodos()}
+
+      {(props.totalTodos && !props.searchedTodos.length) && props.onEmptySearchResults(props.searchText)}
+
+      {props.searchedTodos.map(renderFun)}
+
+      <ul className="TodoList">{props.children}</ul>
+    </section>
   );
 }
 
