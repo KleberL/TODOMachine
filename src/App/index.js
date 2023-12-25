@@ -14,21 +14,26 @@ import { TodoForm } from "../TodoForm";
 import { ChangeAlert } from '../ChangeAlert';
 
 function App() {
+  const { state, stateUpdaters } = useTodos();
+
   const { 
-    loading,
     error, 
+    loading,
     searchedTodos, 
-    completeTodos, 
-    deleteTodos, 
-    openModal, 
-    setOpenModal, 
-    completedTodos,
     totalTodos,
-    searchValue, 
-    setSearchValue,
+    completeTodos, 
+    completedTodos,
+    openModal, 
+    searchValue,
+  } = state
+
+  const { 
+    setOpenModal, 
     addTodo, 
+    deleteTodos, 
+    setSearchValue,
     sincronizeTodos,
-  } = useTodos();
+  } = stateUpdaters
 
   return (
     <>
